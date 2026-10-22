@@ -1,0 +1,31 @@
+{
+  "variables": {
+    "scw_access_key": "",
+    "scw_secret_key": ""
+  },
+  "builders": [
+    {
+      "type": "scaleway",
+      "project_id": "{{user `scw_project_id`}}",
+      "access_key": "{{user `scw_access_key`}}",
+      "secret_key": "{{user `scw_secret_key`}}",
+      "image": "ubuntu_noble",
+      "zone": "fr-par-1",
+      "commercial_type": "DEV1-L",
+      "ssh_username": "root",
+      "ssh_private_key_file": "~/.ssh/id_rsa_iohk"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "sleep 30"
+      ]
+    },
+    {
+      "type": "shell",
+      "script": "build-env.sh"
+    }
+  ]
+}
