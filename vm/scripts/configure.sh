@@ -63,12 +63,12 @@ EOF
 
 # install latest Rust
 # The latter is needed for native libraries apparently
-sudo apt install -y llvm-23 libclang-dev
-echo LIBCLANG_PATH=/usr/lib/llvm-23/lib >>~/.bashrc
+sudo apt install -y llvm-20 libclang-dev
+echo LIBCLANG_PATH=/usr/lib/llvm-20/lib >>~/.bashrc
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 # install nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 
 # install git-gamble
-cargo install git-gamble
+${HOME}/.cargo/bin/cargo install git-gamble
