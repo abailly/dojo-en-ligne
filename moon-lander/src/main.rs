@@ -1,8 +1,17 @@
 fn main() {
-    println!("Hello, Moon Lander!");
+    process();
+}
+
+fn process() {
+  let mut module = make_module_lunaire(ALTITUDE_INITIALE);
+  while (altitude(module) > 0.0) {
+    println!("{}", altitude(module));
+    module = evolue(module);
+  }
 }
 
 const G_Lunaire: f64 = 1.622;
+const ALTITUDE_INITIALE: Altitude = 50.0;
 
 type Altitude = f64;
 type ModuleLunaire = Altitude;
@@ -15,7 +24,7 @@ fn altitude(module: ModuleLunaire) -> Altitude {
     module
 }
 
-fn tic_tac(module: ModuleLunaire) -> ModuleLunaire {
+fn evolue(module: ModuleLunaire) -> ModuleLunaire {
     module - 1.0
 }
 
@@ -23,7 +32,6 @@ fn tic_tac(module: ModuleLunaire) -> ModuleLunaire {
 mod tests {
     use super::*;
 
-    const ALTITUDE_INITIALE: Altitude = 50.0;
 
     #[test]
     fn altitude_initiale_est_50_kilometres() {
@@ -34,8 +42,8 @@ mod tests {
     #[test]
     fn altitude_change_avec_le_temps_et_la_gravite() {
         let module_v1 = make_module_lunaire(ALTITUDE_INITIALE);
-        let module_v2 = tic_tac(module_v1);
-        let module_v3 = tic_tac(module_v2);
+        let module_v2 = evolue(module_v1);
+        let module_v3 = evolue(module_v2);
 
         assert!(altitude(module_v3) < altitude(module_v2));
     }
