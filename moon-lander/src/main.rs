@@ -2,12 +2,14 @@ fn main() {
     process();
 }
 
+// --- commands -->
+// <--- output ----
 fn process() {
-  let mut module = make_module_lunaire(ALTITUDE_INITIALE);
-  while (altitude(module) > 0.0) {
-    println!("{}", altitude(module));
-    module = evolue(module);
-  }
+    let mut module = make_module_lunaire(ALTITUDE_INITIALE);
+    while (altitude(module) > 0.0) {
+        println!("{}", altitude(module));
+        module = evolue(module);
+    }
 }
 
 const G_Lunaire: f64 = 1.622;
@@ -28,10 +30,13 @@ fn evolue(module: ModuleLunaire) -> ModuleLunaire {
     module - 1.0
 }
 
+fn accelere(module: ModuleLunaire) -> ModuleLunaire {
+  module + 1.0
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
-
 
     #[test]
     fn altitude_initiale_est_50_kilometres() {
@@ -46,5 +51,11 @@ mod tests {
         let module_v3 = evolue(module_v2);
 
         assert!(altitude(module_v3) < altitude(module_v2));
+    }
+    #[test]
+    fn altitude_change_avec_le_temps_et_le_moteur() {
+        let module_v1 = make_module_lunaire(ALTITUDE_INITIALE);
+        let module_v2 = accelere(module_v1);
+        assert!(altitude(module_v2) > altitude(module_v1));
     }
 }
