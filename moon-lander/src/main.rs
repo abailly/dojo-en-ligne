@@ -30,7 +30,7 @@ fn evolue(module: ModuleLunaire) -> ModuleLunaire {
     module - 1.0
 }
 
-fn accelere(module: ModuleLunaire) -> ModuleLunaire {
+fn allume_moteur(module: ModuleLunaire) -> ModuleLunaire {
   module + 1.0
 }
 
@@ -55,7 +55,7 @@ mod tests {
     #[test]
     fn altitude_change_avec_le_temps_et_le_moteur() {
         let module_v1 = make_module_lunaire(ALTITUDE_INITIALE);
-        let module_v2 = accelere(module_v1);
+        let module_v2 = allume_moteur(module_v1);
         assert!(altitude(module_v2) > altitude(module_v1));
     }
 }
