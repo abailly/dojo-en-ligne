@@ -40,6 +40,7 @@ runcmd:
 - runuser curry -c 'curl -fLo ~curry/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 - runuser curry -c 'go install github.com/owenthereal/upterm/cmd/upterm@latest'
 - runuser curry -c 'rustup default stable'
+- runuser curry -c 'cargo install git-gamble'
 - runuser curry -c '[[ -f ~curry/.bashrc ]] && rm ~curry/.bashrc'
 - runuser curry -c '[[ -f ~/.bash_aliases ]] && rm ~curry/.bashrc'
 - runuser curry -c 'ln -s ~curry/dojo-en-ligne/vm/dotfiles/.tmux.conf ~curry/.tmux.conf'
