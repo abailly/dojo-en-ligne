@@ -1,0 +1,45 @@
+---
+users:
+- name: curry
+  groups:
+  - admin
+  - sudoers
+  sudo:
+  - ALL=(ALL) NOPASSWD:ALL
+  ssh_authorized_keys:
+  - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC8aDeQyneOJA8KJegRWsJyf7qWbyKet5j0GACCDw7KS
+    arnaud@Arnaud-MBP-Perso.local
+  - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAfjzGD03XtF8kTHpCFyDVrTTdYLk4Gg+FRUHPjSBcCI
+    cthibauttof@gmail.com
+  shell: "/bin/bash"
+packages:
+- sbcl
+- apt-transport-https
+- apt-utils
+- ca-certificates
+- curl
+- software-properties-common
+- emacs-nox
+- gnupg2
+- tmux
+- graphviz
+- wget
+- jq
+- bzip2
+- readline-common
+- neovim
+- inotify-tools
+- ripgrep
+- libgmp-dev
+- sqlite3
+- build-essential
+runcmd:
+- runuser curry -c 'git clone https://github.com/abailly/dojo-en-ligne ~curry/dojo-en-ligne'
+- runuser curry -c 'curl -fLo ~curry/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+- runuser curry -c '[[ -f ~curry/.bashrc ]] && rm ~curry/.bashrc'
+- runuser curry -c '[[ -f ~/.bash_aliases ]] && rm ~curry/.bashrc'
+- runuser curry -c 'ln -s ~curry/dojo-en-ligne/vm/dotfiles/.tmux.conf ~curry/.tmux.conf'
+- runuser curry -c 'ln -s ~curry/dojo-en-ligne/vm/dotfiles/.vimrc ~curry/.vimrc'
+- runuser curry -c 'ln -s ~curry/dojo-en-ligne/vm/dotfiles/.bashrc ~curry/.bashrc'
+- runuser curry -c 'ln -s ~curry/dojo-en-ligne/vm/dotfiles/.bash_aliases ~curry/.bash_aliases'
+- runuser curry -c 'ln -s ~curry/dojo-en-ligne/vm/dotfiles/.gitconfig ~curry/.gitconfig'
