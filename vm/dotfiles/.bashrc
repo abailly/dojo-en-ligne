@@ -120,3 +120,5 @@ fi
 
 # Git completion
 [ -f ~/.git-completion.sh ] && source ~/.git-completion.sh
+
+export PATH=${HOME}/go/bin:${HOME}/.cargo/bin:${HOME}/.local/bin:${PATH}
