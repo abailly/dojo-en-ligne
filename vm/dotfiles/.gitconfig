@@ -1,0 +1,44 @@
+[column]
+  ui = auto
+[branch]
+  sort = -committerdate
+[tag]
+  sort = version:refname
+[init]
+  defaultBranch = main
+[diff]
+  algorithm = histogram
+  colorMoved = plain
+  mnemonicPrefix = true
+  renames = true
+[help]
+  autocorrect = prompt
+[rerere]
+  enabled = true
+  autoupdate = true
+[alias]
+	s = status
+	l = log --oneline --graph --decorate
+	ci = commit
+	co = checkout
+	sub = submodule
+	green = gamble --green
+	red = gamble --red
+[push]
+  default = simple
+  autoSetupRemote = true
+  followTags = true
+[fetch]
+  prune = true
+  pruneTags = true
+  all = true
+[core]
+	autocrlf = input
+  excludesfile = ~/.gitignore
+[commit]
+	gpgsign = true
+  verbose = true
+[rebase]
+  autoSquash = true
+  autoStash = true
+  updateRefs = true

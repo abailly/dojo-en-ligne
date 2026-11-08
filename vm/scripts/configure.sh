@@ -5,36 +5,17 @@
 set -e
 
 # clone dotfiles from github
-[[ -d ~/dotfiles ]] || git clone https://github.com/abailly/dotfiles ~/dotfiles
+[[ -d ~/dojo-en-ligne ]] || git clone https://github.com/abailly/dojo-en-ligne ~/dojo-en-ligne
 [[ -L ~/.emacs ]] || ln -s ~/dotfiles/.emacs ~/.emacs
 [[ -L ~/.tmux.conf ]] || ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
+[[ -L ~/.vimrc ]] || ln -s ~/dotfiles/.vimrc ~/.vimrc
 [[ -L ~/.git-completion.sh ]] || ln -s ~/dotfiles/bash-completion.sh ~/.git-completion.sh
-[[ -d ~/coding-dojo ]] || git clone https://github.com/abailly/dojo-nantes ~/dojo-nantes
+[[ -L ~/.gitconfig ]] || ln -s ~/dotfiles/gitconfig ~/.gitconfig
 
-cat >~/.gitconfig <<EOF
-[user]
-	name = Arnaud Bailly
-	email = arnaud@pankzsoft.com
-[alias]
-	s = status
-	l = log --oneline --graph --decorate
-	ci = commit
-	co = checkout
-	sub = submodule
-[push]
-	default = simple
-[core]
-	autocrlf = input
-EOF
-
-if [[ -f ~/.bashrc ]]; then
-    rm ~/.bashrc
-fi
+[[ -f ~/.bashrc ]] && rm ~/.bashrc
 ln -s ~/dotfiles/.bashrc ~/.bashrc
 
-if [[ -f ~/.bash_aliases ]]; then
-    rm ~/.bash_aliases
-fi
+[[ -f ~/.bash_aliases ]] && rm ~/.bash_aliases
 ln -s ~/dotfiles/.bash_aliases ~/.bash_aliases
 
 # install SBCL
