@@ -53,6 +53,12 @@ mod tests {
     }
 
     #[test]
+    fn moteur_est_initialement_eteint() {
+        let module = make_module_lunaire(ALTITUDE_INITIALE);
+        assert!(!module.moteur_allume);
+    }
+
+    #[test]
     fn altitude_change_avec_le_temps_et_la_gravite() {
         let module_v1 = make_module_lunaire(ALTITUDE_INITIALE);
         let module_v2 = evolue(&module_v1);
