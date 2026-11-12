@@ -15,7 +15,7 @@ fn process() {
 const G_Lunaire: f64 = 1.622;
 const ALTITUDE_INITIALE: Altitude = 50.0;
 
-#[derive(Debug,PartialEq)]
+#[derive(Clone,Copy,Debug,PartialEq)]
 enum EtatMoteur {
    MoteurAllume,
    MoteurEteint
@@ -24,12 +24,11 @@ enum EtatMoteur {
 type Altitude = f64;
 struct ModuleLunaire {
     altitude:  Altitude,
-    moteur_allume: bool,
-
+    etat_moteur: EtatMoteur,
 }
 
 fn make_module_lunaire(altitude_initiale: Altitude) -> ModuleLunaire {
-    ModuleLunaire { altitude: altitude_initiale, moteur_allume: false, }
+    ModuleLunaire { altitude: altitude_initiale, etat_moteur: EtatMoteur::MoteurEteint, }
 }
 
 fn altitude(module: &ModuleLunaire) -> Altitude {
@@ -37,15 +36,15 @@ fn altitude(module: &ModuleLunaire) -> Altitude {
 }
 
 fn evolue(module: &ModuleLunaire) -> ModuleLunaire {
-    if module.moteur_allume {
-        ModuleLunaire { altitude: module.altitude + 1.0,moteur_allume: module.moteur_allume }
+    if module.etat_moteur == EtatMoteur::MoteurAllume {
+        ModuleLunaire { altitude: module.altitude + 1.0,etat_moteur: module.etat_moteur }
     } else {
-        ModuleLunaire { altitude: module.altitude - 1.0,moteur_allume: module.moteur_allume }
+        ModuleLunaire { altitude: module.altitude - 1.0,etat_moteur: module.etat_moteur }
     }
 }
 
 fn allume_moteur(module: &ModuleLunaire) -> ModuleLunaire {
-        ModuleLunaire { altitude: module.altitude, moteur_allume: true}
+        ModuleLunaire { altitude: module.altitude, etat_moteur: EtatMoteur::MoteurAllume}
 }
 
 #[cfg(test)]
@@ -63,8 +62,7 @@ mod tests {
         let module = make_module_lunaire(ALTITUDE_INITIALE);
         EtatMoteur::MoteurAllume; 
         EtatMoteur::MoteurEteint; 
-        // assert_eq!(EtatMoteur::MoteurEteint, module.moteur_allume);
-        assert!(!module.moteur_allume);
+        assert_eq!(EtatMoteur::MoteurEteint, module.etat_moteur);
     }
 
     #[test]
