@@ -15,6 +15,8 @@ fn process() {
 const G_Lunaire: f64 = 1.622;
 const ALTITUDE_INITIALE: Altitude = 50.0;
 
+enum EtatMoteur {}
+
 type Altitude = f64;
 struct ModuleLunaire {
     altitude:  Altitude,
