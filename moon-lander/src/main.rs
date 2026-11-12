@@ -63,6 +63,7 @@ mod tests {
         let module = make_module_lunaire(ALTITUDE_INITIALE);
         EtatMoteur::MoteurAllume; 
         EtatMoteur::MoteurEteint; 
+        // assert_eq!(EtatMoteur::MoteurEteint, module.moteur_allume);
         assert!(!module.moteur_allume);
     }
 
