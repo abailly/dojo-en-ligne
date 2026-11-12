@@ -15,7 +15,9 @@ fn process() {
 const G_Lunaire: f64 = 1.622;
 const ALTITUDE_INITIALE: Altitude = 50.0;
 
-enum EtatMoteur {}
+enum EtatMoteur {
+   MoteurAllume
+}
 
 type Altitude = f64;
 struct ModuleLunaire {
@@ -47,7 +49,7 @@ fn allume_moteur(module: &ModuleLunaire) -> ModuleLunaire {
 #[cfg(test)]
 mod tests {
     use super::*;
-
+    
     #[test]
     fn altitude_initiale_est_50_kilometres() {
         let module = make_module_lunaire(ALTITUDE_INITIALE);
@@ -57,6 +59,7 @@ mod tests {
     #[test]
     fn moteur_est_initialement_eteint() {
         let module = make_module_lunaire(ALTITUDE_INITIALE);
+        EtatMoteur::MoteurAllume; 
         assert!(!module.moteur_allume);
     }
 
