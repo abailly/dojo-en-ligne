@@ -42,3 +42,6 @@
   autoSquash = true
   autoStash = true
   updateRefs = true
+[user]
+	email = arnaud.oqube@gmail.com
+	name = Arnaud Bailly
