@@ -16,7 +16,8 @@ const G_Lunaire: f64 = 1.622;
 const ALTITUDE_INITIALE: Altitude = 50.0;
 
 enum EtatMoteur {
-   MoteurAllume
+   MoteurAllume,
+   MoteurEteint
 }
 
 type Altitude = f64;
@@ -60,6 +61,7 @@ mod tests {
     fn moteur_est_initialement_eteint() {
         let module = make_module_lunaire(ALTITUDE_INITIALE);
         EtatMoteur::MoteurAllume; 
+        EtatMoteur::MoteurEteint; 
         assert!(!module.moteur_allume);
     }
 
