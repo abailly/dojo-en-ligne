@@ -15,6 +15,7 @@ fn process() {
 const G_Lunaire: f64 = 1.622;
 const ALTITUDE_INITIALE: Altitude = 50.0;
 
+#[derive(Debug,PartialEq)]
 enum EtatMoteur {
    MoteurAllume,
    MoteurEteint
