@@ -1,13 +1,22 @@
 # Environment de développement
 
-Ce répertoire contient du code [opentofu](https://opentofu.org) pour créer une VM Scaleway contenant un environnement de développement pour divers langages:
+L'environnement de développement pour le dojo en ligne est basé sur le principe d'un terminal partagé dans Linux. L'utilisation d'un terminal partagé permet de minimiser les coûts de transaction lors des passages de relais durant le dojo, ainsi que les besoins en bande passante réseau. Partager un terminal en lecture/écriture n'étant pas idéal d'un point de vue de la sécurité, il est préférable de le faire dans une machine virtuelle.
+
+Ce répertoire propose deux solutions pour ce faire : une solution hébergée dans les nuages avec [Scaleway](https://console.scaleway.com/), une solution locale avec [Multipass](https://canonical.com/multipass).
+
+Dans les deux cas l'hôte est configuré avec :
 
 * [Emacs](https://emacs.org) de base et [neovim](https://neovim.io) pour l'édition de code,
-* Fichiers de configuration tirés de [https://github.com/abailly/dotfiles](https://github.com/abailly/dotfiles)
+* Fichiers de configuration ["dotfiles"](./dotfiles)
 * [GHCup](https://www.haskell.org/ghcup/) pour du Haskell
 * [SBCL](https://www.sbcl.org) avec [Quicklisp](https://www.quicklisp.org/beta/) pour du Common Lisp
 * [rustup](https://rustup.rs) pour du Rust
 * [nvm](https://github.com/nvm-sh/nvm) pour Javascript/Typescript
+
+
+# VM Scaleway
+
+Ce répertoire contient du code [opentofu](https://opentofu.org) pour créer une VM Scaleway.
 
 ## Initialisation
 
@@ -80,11 +89,11 @@ La configuration de la VM est réalisée avec [Cloud Init](https://cloud-init.io
 multipass  launch resolute --name spinner --cpus 2 --memory 2G --disk 10G --timeout 1000 --cloud-init cloud-init.yaml
 ```
 
-## Upterm
+## Connexion
 
-[tmate]() n'offre plus de service de connexion public, il est nécessaire de déployer un serveur.
+[tmate](https://tmate.io) n'offre plus de service de connexion public, il est nécessaire de déployer un serveur.
 
-[upterm](https://github.com/owenthereal/upterm) semble une alternative intéressante, similaire dans son principe.
+[upterm](https://github.com/owenthereal/upterm) semble une alternative intéressante, similaire dans son principe. Il est installé sur la machine virtuelle.
 
 Sur la machine hôte:
 
