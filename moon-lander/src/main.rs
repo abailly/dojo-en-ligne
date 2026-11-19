@@ -44,6 +44,7 @@ fn altitude(module: &ModuleLunaire) -> Altitude {
 fn evolue(module: &ModuleLunaire) -> ModuleLunaire {
     ModuleLunaire {
         altitude: evolue_altitude(module),
+        vitesse: 1.0,
         ..*module
     }
 }
@@ -54,7 +55,7 @@ fn evolue_altitude(module: &ModuleLunaire) -> Altitude {
     } else {
         -1.0
     };
-    module.altitude + module.vitesse + vitesse
+    module.altitude + vitesse
 }
 
 fn allume_moteur(module: &ModuleLunaire) -> ModuleLunaire {
@@ -82,6 +83,13 @@ mod tests {
         fn initialement_la_vitesse_est_nulle() {
             let module = make_module_lunaire(ALTITUDE_INITIALE);
             assert_eq!(0.0, module.vitesse)
+        }
+        #[test]
+        fn vitesse_augmente_quand_moteur_est_allume() {
+            let module_init = make_module_lunaire(ALTITUDE_INITIALE);
+            let module_allume = allume_moteur(&module_init);
+            let module = evolue(&module_allume);
+            assert_eq!(1.0, module.vitesse)
         }
     }
 

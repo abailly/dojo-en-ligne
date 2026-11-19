@@ -21,3 +21,4 @@ main	/Users/tof/Coding/dojo-en-ligne/moon-lander/src/main.rs	/^fn main() {$/;"	f
 make_module_lunaire	/Users/tof/Coding/dojo-en-ligne/moon-lander/src/main.rs	/^fn make_module_lunaire(altitude_initiale: Altitude) -> ModuleLunaire {$/;"	f
 moteur_est_initialement_eteint	/Users/tof/Coding/dojo-en-ligne/moon-lander/src/main.rs	/^    fn moteur_est_initialement_eteint() {$/;"	f
 process	/Users/tof/Coding/dojo-en-ligne/moon-lander/src/main.rs	/^fn process() {$/;"	f
+vitesse_augmente_quand_moteur_est_allume	/Users/tof/Coding/dojo-en-ligne/moon-lander/src/main.rs	/^        fn vitesse_augmente_quand_moteur_est_allume() {$/;"	f
