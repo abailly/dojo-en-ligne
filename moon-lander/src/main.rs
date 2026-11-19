@@ -22,6 +22,7 @@ enum EtatMoteur {
 }
 
 type Altitude = f64;
+
 struct ModuleLunaire {
     altitude: Altitude,
     etat_moteur: EtatMoteur,
@@ -45,7 +46,7 @@ fn evolue(module: &ModuleLunaire) -> ModuleLunaire {
     }
 }
 
-fn evolue_altitude(module: &ModuleLunaire) -> f64 {
+fn evolue_altitude(module: &ModuleLunaire) -> Altitude {
     if module.etat_moteur == EtatMoteur::MoteurAllume {
         module.altitude + 1.0
     } else {
