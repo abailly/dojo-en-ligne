@@ -23,10 +23,41 @@ L'état du vaisseau à un instant t est représenté par une structure immuable 
 - Nouvelle vitesse : $v' = v + a ⋅ Δ t$
 - Nouvelle altitude : \(h' = h + v \cdot \Delta t + \frac{1}{2} a \cdot \Delta t^2\) (ou l'approximation d'Euler $h' = h + v' ⋅ Δ t$)
 
+Altitude -> vitesse -> acceleration -> (poussée moteur, gravité lunaire)
 
+(Dans le cours M.I.T g = 0.5)
 
 Constantes :
 
 - poussée moteur = 1.0
 - altitude initiale = 50.0
 - vélocité initiale = 0.0
+
+premier pas de temps avec moteur allumé:
+    poussée moteur = 1, g = 0.5
+    accelération nette = 1 - 0.5
+    nouvelle vitesse = 0 + 0.5 = 0.5
+    nouvelle altitude = 50.5
+
+premier pas de temps avec moteur éteint:
+    poussée moteur = 0, g = 0.5
+    accelération nette = - 0.5
+    nouvelle vitesse = 0 - 0.5 = -0.5
+    nouvelle altitude = 49.5
+
+
+3 pas de temps avec moteur éteint:
+    poussée moteur = 0, g = 0.5
+    accelération nette = - 0.5
+    nouvelle vitesse = 0 - 0.5 = -0.5
+    nouvelle altitude = 49.5
+    poussée moteur = 0, g = 0.5
+    accelération nette = - 0.5
+    nouvelle vitesse = -0.5 - 0.5 = -1.0
+    nouvelle altitude = 48.5
+    poussée moteur = 0, g = 0.5
+    accelération nette = - 0.5
+    nouvelle vitesse = -1.0 - 0.5 = -1.5
+    nouvelle altitude = 47.0
+
+
