@@ -1,7 +1,11 @@
 terraform {
- required_providers {
+  required_providers {
     scaleway = {
       source = "scaleway/scaleway"
+    }
+    multipass = {
+      source  = "larstobi/multipass"
+      version = "1.4.2"
     }
   }
 

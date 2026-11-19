@@ -64,33 +64,35 @@ mod tests {
     use super::*;
 
     #[test]
-    fn altitude_initiale_est_50_kilometres() {
-        let module = make_module_lunaire(ALTITUDE_INITIALE);
-        assert_eq!(ALTITUDE_INITIALE, altitude(&module));
-    }
-
-    #[test]
     fn moteur_est_initialement_eteint() {
         let module = make_module_lunaire(ALTITUDE_INITIALE);
-        EtatMoteur::MoteurAllume;
-        EtatMoteur::MoteurEteint;
         assert_eq!(EtatMoteur::MoteurEteint, module.etat_moteur);
     }
 
-    #[test]
-    fn altitude_change_avec_le_temps_et_la_gravite() {
-        let module_v1 = make_module_lunaire(ALTITUDE_INITIALE);
-        let module_v2 = evolue(&module_v1);
-        let module_v3 = evolue(&module_v2);
+    mod altitude {
+        use super::*;
 
-        assert!(altitude(&module_v3) < altitude(&module_v2));
-    }
+        #[test]
+        fn altitude_initiale_est_50_kilometres() {
+            let module = make_module_lunaire(ALTITUDE_INITIALE);
+            assert_eq!(ALTITUDE_INITIALE, altitude(&module));
+        }
 
-    #[test]
-    fn altitude_change_avec_le_temps_et_le_moteur() {
-        let module_v1 = make_module_lunaire(ALTITUDE_INITIALE);
-        let module_v2 = allume_moteur(&module_v1);
-        let module_v3 = evolue(&module_v2);
-        assert!(altitude(&module_v3) > altitude(&module_v2));
+        #[test]
+        fn altitude_change_avec_le_temps_et_la_gravite() {
+            let module_v1 = make_module_lunaire(ALTITUDE_INITIALE);
+            let module_v2 = evolue(&module_v1);
+            let module_v3 = evolue(&module_v2);
+
+            assert!(altitude(&module_v3) < altitude(&module_v2));
+        }
+
+        #[test]
+        fn altitude_augmente_quand_le_moteur_est_allume_sur_etat_initial() {
+            let module_v1 = make_module_lunaire(ALTITUDE_INITIALE);
+            let module_v2 = allume_moteur(&module_v1);
+            let module_v3 = evolue(&module_v2);
+            assert!(altitude(&module_v3) > altitude(&module_v2));
+        }
     }
 }
