@@ -6,7 +6,7 @@ fn main() {
 // <--- output ----
 fn process() {
     let mut module = make_module_lunaire(ALTITUDE_INITIALE);
-    while (altitude(&module) > 0.0) {
+    while altitude(&module) > 0.0 {
         println!("{}", altitude(&module));
         module = evolue(&module);
     }
