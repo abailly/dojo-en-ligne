@@ -91,6 +91,14 @@ mod tests {
             let module = evolue(&module_allume);
             assert_eq!(1.0, module.vitesse)
         }
+        #[test]
+        fn vitesse_augmente_encore_plus_quand_moteur_est_allume() {
+            let module_init = make_module_lunaire(ALTITUDE_INITIALE);
+            let module_allume = allume_moteur(&module_init);
+            let module_evolue = allume_moteur(&module_allume);
+            let module = evolue(&module_evolue);
+            assert_eq!(1.0, module.vitesse)
+        }
     }
 
     mod altitude {
