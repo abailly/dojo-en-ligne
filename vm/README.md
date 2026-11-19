@@ -1,13 +1,22 @@
 # Environment de développement
 
-Ce répertoire contient du code [opentofu](https://opentofu.org) pour créer une VM Scaleway contenant un environnement de développement pour divers langages:
+L'environnement de développement pour le dojo en ligne est basé sur le principe d'un terminal partagé dans Linux. L'utilisation d'un terminal partagé permet de minimiser les coûts de transaction lors des passages de relais durant le dojo, ainsi que les besoins en bande passante réseau. Partager un terminal en lecture/écriture n'étant pas idéal d'un point de vue de la sécurité, il est préférable de le faire dans une machine virtuelle.
+
+Ce répertoire propose deux solutions pour ce faire : une solution hébergée dans les nuages avec [Scaleway](https://console.scaleway.com/), une solution locale avec [Multipass](https://canonical.com/multipass).
+
+Dans les deux cas l'hôte est configuré avec :
 
 * [Emacs](https://emacs.org) de base et [neovim](https://neovim.io) pour l'édition de code,
-* Fichiers de configuration tirés de [https://github.com/abailly/dotfiles](https://github.com/abailly/dotfiles)
+* Fichiers de configuration ["dotfiles"](./dotfiles)
 * [GHCup](https://www.haskell.org/ghcup/) pour du Haskell
 * [SBCL](https://www.sbcl.org) avec [Quicklisp](https://www.quicklisp.org/beta/) pour du Common Lisp
 * [rustup](https://rustup.rs) pour du Rust
 * [nvm](https://github.com/nvm-sh/nvm) pour Javascript/Typescript
+
+
+# VM Scaleway
+
+Ce répertoire contient du code [opentofu](https://opentofu.org) pour créer une VM Scaleway.
 
 ## Initialisation
 
@@ -68,3 +77,52 @@ Les fichers [build-env.sh](./build-env.sh) et [build.json]()./build.json) sont u
 ```bash
 packer build -var scw_access_key=123 -var scw_secret_key=345 build.json
 ```
+
+# Multipass
+
+[multipass](https://canonical.com/multipass) est un outil de gestion de VM Linux/Ubuntu disponible sur tous les systèmes, et constitue une alternative locale à une VM scaleway dans le cloud.
+
+La configuration de la VM est réalisée avec [Cloud Init](https://cloud-init.io) au moyen d'un unique fichier [cloud-init.yaml](./cloud-init.yaml):
+
+
+```bash
+multipass  launch resolute --name spinner --cpus 2 --memory 2G --disk 10G --timeout 1000 --cloud-init cloud-init.yaml
+```
+
+## Connexion
+
+[tmate](https://tmate.io) n'offre plus de service de connexion public, il est nécessaire de déployer un serveur.
+
+[upterm](https://github.com/owenthereal/upterm) semble une alternative intéressante, similaire dans son principe. Il est installé sur la machine virtuelle.
+
+Sur la machine hôte:
+
+```
+$ upterm host
+Session: h6XZADWRx5YK1BaNRIqC
+
+Name:             bash-e8a7
+Command:          /bin/bash
+Relay:            ssh://uptermd.upterm.dev
+Access:           open: anyone with the session ID can join
+Guests:           can type; files: primary terminal approval required; forwarding: loopback-approval; shell: shared; exec: approval; approval: terminal
+
+➤ Join:
+    upterm join ssh://h6XZADWRx5YK1BaNRIqC@uptermd.upterm.dev
+➤ SSH:
+    ssh h6XZADWRx5YK1BaNRIqC@uptermd.upterm.dev
+➤ SFTP:
+    sftp h6XZADWRx5YK1BaNRIqC@uptermd.upterm.dev
+➤ SCP:
+    scp <local> h6XZADWRx5YK1BaNRIqC@uptermd.upterm.dev:<remote>
+    scp h6XZADWRx5YK1BaNRIqC@uptermd.upterm.dev:<remote> <local>
+Start the session? [y/n]
+```
+
+Les invités peuvent alors se connecter avec
+
+```
+ssh h6XZADWRx5YK1BaNRIqC@uptermd.upterm.dev
+```
+
+sans avoir besoin de partager leurs clés SSH.

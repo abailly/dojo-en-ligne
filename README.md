@@ -1,6 +1,11 @@
 # Coding dojo
 
-## Introductions
+## Sessions
+
+- [2026-10-29](./2026-10-29.md)
+- [2026-10-22](./2026-10-22.md)
+
+# Quoi est-ce que? 
 
 *Présents*: Arnaud, ToF, Jonathan, Dimitri, Julien, Fabinout
 
@@ -40,6 +45,3 @@
 
 - hebdomadaire, tous les jeudis, 12h15-13h45 ?
 
-## Sessions
-
-- [2026-10-22](./2026-10-22.md)
