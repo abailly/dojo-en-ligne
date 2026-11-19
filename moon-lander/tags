@@ -1,0 +1,22 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ALTITUDE_INITIALE	/Users/tof/Coding/dojo-en-ligne/moon-lander/src/main.rs	/^const ALTITUDE_INITIALE: Altitude = 50.0;$/;"	c
+Altitude	/Users/tof/Coding/dojo-en-ligne/moon-lander/src/main.rs	/^type Altitude = f64;$/;"	T
+EtatMoteur	/Users/tof/Coding/dojo-en-ligne/moon-lander/src/main.rs	/^enum EtatMoteur {$/;"	g
+G_Lunaire	/Users/tof/Coding/dojo-en-ligne/moon-lander/src/main.rs	/^const G_Lunaire: f64 = 1.622;$/;"	c
+ModuleLunaire	/Users/tof/Coding/dojo-en-ligne/moon-lander/src/main.rs	/^struct ModuleLunaire {$/;"	s
+allume_moteur	/Users/tof/Coding/dojo-en-ligne/moon-lander/src/main.rs	/^fn allume_moteur(module: &ModuleLunaire) -> ModuleLunaire {$/;"	f
+altitude	/Users/tof/Coding/dojo-en-ligne/moon-lander/src/main.rs	/^fn altitude(module: &ModuleLunaire) -> Altitude {$/;"	f
+altitude_augmente_quand_le_moteur_est_allume_sur_etat_initial	/Users/tof/Coding/dojo-en-ligne/moon-lander/src/main.rs	/^        fn altitude_augmente_quand_le_moteur_est_allume_sur_etat_initial() {$/;"	f
+altitude_change_avec_le_temps_et_la_gravite	/Users/tof/Coding/dojo-en-ligne/moon-lander/src/main.rs	/^        fn altitude_change_avec_le_temps_et_la_gravite() {$/;"	f
+altitude_initiale_est_50_kilometres	/Users/tof/Coding/dojo-en-ligne/moon-lander/src/main.rs	/^        fn altitude_initiale_est_50_kilometres() {$/;"	f
+evolue	/Users/tof/Coding/dojo-en-ligne/moon-lander/src/main.rs	/^fn evolue(module: &ModuleLunaire) -> ModuleLunaire {$/;"	f
+evolue_altitude	/Users/tof/Coding/dojo-en-ligne/moon-lander/src/main.rs	/^fn evolue_altitude(module: &ModuleLunaire) -> Altitude {$/;"	f
+main	/Users/tof/Coding/dojo-en-ligne/moon-lander/src/main.rs	/^fn main() {$/;"	f
+make_module_lunaire	/Users/tof/Coding/dojo-en-ligne/moon-lander/src/main.rs	/^fn make_module_lunaire(altitude_initiale: Altitude) -> ModuleLunaire {$/;"	f
+moteur_est_initialement_eteint	/Users/tof/Coding/dojo-en-ligne/moon-lander/src/main.rs	/^    fn moteur_est_initialement_eteint() {$/;"	f
+process	/Users/tof/Coding/dojo-en-ligne/moon-lander/src/main.rs	/^fn process() {$/;"	f

@@ -47,11 +47,12 @@ fn evolue(module: &ModuleLunaire) -> ModuleLunaire {
 }
 
 fn evolue_altitude(module: &ModuleLunaire) -> Altitude {
-    if module.etat_moteur == EtatMoteur::MoteurAllume {
-        module.altitude + 1.0
+    let vitesse = if module.etat_moteur == EtatMoteur::MoteurAllume {
+        1.0
     } else {
-        module.altitude - 1.0
-    }
+        -1.0
+    };
+    module.altitude + vitesse
 }
 
 fn allume_moteur(module: &ModuleLunaire) -> ModuleLunaire {
