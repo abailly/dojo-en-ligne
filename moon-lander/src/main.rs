@@ -40,12 +40,16 @@ fn altitude(module: &ModuleLunaire) -> Altitude {
 
 fn evolue(module: &ModuleLunaire) -> ModuleLunaire {
     ModuleLunaire {
-        altitude: if module.etat_moteur == EtatMoteur::MoteurAllume {
-            module.altitude + 1.0
-        } else {
-            module.altitude - 1.0
-        },
+        altitude: evolue_altitude(module),
         ..*module
+    }
+}
+
+fn evolue_altitude(module: &ModuleLunaire) -> f64 {
+    if module.etat_moteur == EtatMoteur::MoteurAllume {
+        module.altitude + 1.0
+    } else {
+        module.altitude - 1.0
     }
 }
 

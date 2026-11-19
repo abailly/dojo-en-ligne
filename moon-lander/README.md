@@ -5,12 +5,13 @@
 - Lancer ssh -A curry@serveur_ip
 
 
-1. Modèle physique et représentation de l'état
+# Modèle physique et représentation de l'état
 
 L'état du vaisseau à un instant t est représenté par une structure immuable (souvent une liste ou une paire) contenant trois valeurs :
-• Altitude (h) : hauteur au-dessus de la surface lunaire (en mètres).
-• Vitesse (v) : vitesse verticale (en m/s, négative lors de la descente).
-• Carburant (f) : quantité de carburant restante (en kg ou unités arbitraires).
+
+- Altitude (h) : hauteur au-dessus de la surface lunaire (en mètres).
+- Vitesse (v) : vitesse verticale (en m/s, négative lors de la descente).
+- Carburant (f) : quantité de carburant restante (en kg ou unités arbitraires).
 
 Équations de mise à jour (pour un pas de temps Δ t)
 
