@@ -16,6 +16,7 @@ altitude_change_avec_le_temps_et_la_gravite	/Users/tof/Coding/dojo-en-ligne/moon
 altitude_initiale_est_50_kilometres	/Users/tof/Coding/dojo-en-ligne/moon-lander/src/main.rs	/^        fn altitude_initiale_est_50_kilometres() {$/;"	f
 evolue	/Users/tof/Coding/dojo-en-ligne/moon-lander/src/main.rs	/^fn evolue(module: &ModuleLunaire) -> ModuleLunaire {$/;"	f
 evolue_altitude	/Users/tof/Coding/dojo-en-ligne/moon-lander/src/main.rs	/^fn evolue_altitude(module: &ModuleLunaire) -> Altitude {$/;"	f
+initialement_la_vitesse_est_nulle	/Users/tof/Coding/dojo-en-ligne/moon-lander/src/main.rs	/^        fn initialement_la_vitesse_est_nulle() {$/;"	f
 main	/Users/tof/Coding/dojo-en-ligne/moon-lander/src/main.rs	/^fn main() {$/;"	f
 make_module_lunaire	/Users/tof/Coding/dojo-en-ligne/moon-lander/src/main.rs	/^fn make_module_lunaire(altitude_initiale: Altitude) -> ModuleLunaire {$/;"	f
 moteur_est_initialement_eteint	/Users/tof/Coding/dojo-en-ligne/moon-lander/src/main.rs	/^    fn moteur_est_initialement_eteint() {$/;"	f

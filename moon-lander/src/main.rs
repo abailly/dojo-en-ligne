@@ -26,12 +26,14 @@ type Altitude = f64;
 struct ModuleLunaire {
     altitude: Altitude,
     etat_moteur: EtatMoteur,
+    vitesse: f64,
 }
 
 fn make_module_lunaire(altitude_initiale: Altitude) -> ModuleLunaire {
     ModuleLunaire {
         altitude: altitude_initiale,
         etat_moteur: EtatMoteur::MoteurEteint,
+        vitesse: 0.0,
     }
 }
 
@@ -59,6 +61,7 @@ fn allume_moteur(module: &ModuleLunaire) -> ModuleLunaire {
     ModuleLunaire {
         altitude: module.altitude,
         etat_moteur: EtatMoteur::MoteurAllume,
+        vitesse: module.vitesse,
     }
 }
 
@@ -70,6 +73,16 @@ mod tests {
     fn moteur_est_initialement_eteint() {
         let module = make_module_lunaire(ALTITUDE_INITIALE);
         assert_eq!(EtatMoteur::MoteurEteint, module.etat_moteur);
+    }
+
+    mod vitesse {
+        use super::*;
+
+        #[test]
+        fn initialement_la_vitesse_est_nulle() {
+            let module = make_module_lunaire(ALTITUDE_INITIALE);
+            assert_eq!(0.0, module.vitesse)
+        }
     }
 
     mod altitude {
