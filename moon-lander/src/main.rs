@@ -54,7 +54,7 @@ fn evolue_altitude(module: &ModuleLunaire) -> Altitude {
     } else {
         -1.0
     };
-    module.altitude + vitesse
+    module.altitude + module.vitesse + vitesse
 }
 
 fn allume_moteur(module: &ModuleLunaire) -> ModuleLunaire {
