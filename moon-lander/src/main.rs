@@ -120,27 +120,12 @@ mod tests {
         }
 
         #[test]
-        fn altitude_augmente_quand_le_moteur_est_allume_sur_etat_initial() {
-            let module_v1 = make_module_lunaire(ALTITUDE_INITIALE);
-            let module_v2 = allume_moteur(&module_v1);
-            let module_v3 = evolue(&module_v2);
-            assert!(altitude(&module_v3) > altitude(&module_v2));
-        }
-
-        #[test]
         fn premier_pas_de_temps_avec_moteur_allume() {
-    // premier pas de temps avec moteur allumé:
-    // poussée moteur = 1, g = 0.5
             let module_v1 = make_module_lunaire(ALTITUDE_INITIALE);
             let module_v2 = allume_moteur(&module_v1);
             let module_v3 = evolue(&module_v2);
-    // accelération nette = 1 - 0.5
-    // nouvelle vitesse = 0 + 0.5 = 0.5
-    // nouvelle altitude = 50.5
             assert_eq!(50.0, altitude(&module_v1));
             assert_eq!(50.5, altitude(&module_v3));
         }   
-
-
     }
 }
