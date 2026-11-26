@@ -51,7 +51,7 @@ fn evolue(module: &ModuleLunaire) -> ModuleLunaire {
 
 fn evolue_altitude(module: &ModuleLunaire) -> Altitude {
     let vitesse = if module.etat_moteur == EtatMoteur::MoteurAllume {
-        1.0
+       0.5 
     } else {
         -1.0
     };
@@ -137,6 +137,7 @@ mod tests {
     // accelération nette = 1 - 0.5
     // nouvelle vitesse = 0 + 0.5 = 0.5
     // nouvelle altitude = 50.5
+            assert_eq!(50.5, altitude(&module_v3));
         }   
 
 
