@@ -116,7 +116,7 @@ mod tests {
             let module_v2 = evolue(&module_v1);
             let module_v3 = evolue(&module_v2);
 
-            assert!(altitude(&module_v3) < altitude(&module_v2));
+            assert_eq!(49.0, altitude(&module_v3));
         }
 
         #[test]
@@ -133,5 +133,14 @@ mod tests {
             let module_v2 = evolue(&module_v1);
             assert_eq!(49.5, altitude(&module_v2));
         }   
+
+        #[test]
+        fn trois_pas_de_temps_avec_moteur_eteint() {
+            let module_t0 = make_module_lunaire(ALTITUDE_INITIALE);
+            let module_t1 = evolue(&module_t0);
+            let module_t2 = evolue(&module_t1);
+            let module_t3 = evolue(&module_t2);
+            assert_eq!(47.0, altitude(&module_t3));
+        }
     }
 }
