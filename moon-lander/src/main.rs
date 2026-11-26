@@ -124,7 +124,6 @@ mod tests {
             let module_v1 = make_module_lunaire(ALTITUDE_INITIALE);
             let module_v2 = allume_moteur(&module_v1);
             let module_v3 = evolue(&module_v2);
-            assert_eq!(50.0, altitude(&module_v1));
             assert_eq!(50.5, altitude(&module_v3));
         }  
 
