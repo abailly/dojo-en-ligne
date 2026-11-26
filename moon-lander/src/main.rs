@@ -12,7 +12,7 @@ fn process() {
     }
 }
 
-const G_Lunaire: f64 = 1.622;
+const G_Lunaire: f64 = 0.5;
 const ALTITUDE_INITIALE: Altitude = 50.0;
 
 #[derive(Clone, Copy, Debug, PartialEq)]
@@ -42,20 +42,15 @@ fn altitude(module: &ModuleLunaire) -> Altitude {
 }
 
 fn evolue(module: &ModuleLunaire) -> ModuleLunaire {
+    let acceleration = 1.0 * (if module.etat_moteur == EtatMoteur::MoteurAllume { 1.0 } else { 0.0 }) - G_Lunaire;
+    let vitesse = module.vitesse + acceleration;
+    let altitude = module.altitude + vitesse;
+
     ModuleLunaire {
-        altitude: evolue_altitude(module),
-        vitesse: 1.0,
+        altitude: altitude,
+        vitesse: vitesse,
         ..*module
     }
-}
-
-fn evolue_altitude(module: &ModuleLunaire) -> Altitude {
-    let vitesse = if module.etat_moteur == EtatMoteur::MoteurAllume {
-       0.5 
-    } else {
-        -0.5
-    };
-    module.altitude + vitesse
 }
 
 fn allume_moteur(module: &ModuleLunaire) -> ModuleLunaire {
@@ -116,7 +111,7 @@ mod tests {
             let module_t1 = evolue(&module_t0);
             let module_t2 = evolue(&module_t1);
             let module_t3 = evolue(&module_t2);
-            //assert_eq!(47.0, altitude(&module_t3));
+            assert_eq!(47.0, altitude(&module_t3));
         }
     }
 }
