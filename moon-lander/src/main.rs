@@ -137,6 +137,7 @@ mod tests {
     // accelération nette = 1 - 0.5
     // nouvelle vitesse = 0 + 0.5 = 0.5
     // nouvelle altitude = 50.5
+            assert_eq!(50.0, altitude(&module_v1));
             assert_eq!(50.5, altitude(&module_v3));
         }   
 
